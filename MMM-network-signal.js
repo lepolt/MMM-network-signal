@@ -21,7 +21,6 @@ Module.register("MMM-network-signal", {
             weak: 500,
         },
         flexDirection: 'row', // set to 'row' to display the row in left-to-right mode, 'row-reverse' to display the row in right-to-left mode
-        flexAlignment: 'center',
         scale: 0.45 // scale for the icon, must be greater than 0
     },
     getTranslations: function() {
@@ -49,16 +48,14 @@ Module.register("MMM-network-signal", {
 
     getDom: function() {
         const content = document.createElement("div");
-        content.style = `flex-direction: ${this.config.flexDirection}; align-items: ${this.config.flexAlignment}; style="--wifi-scale: ${this.config.scale};"`;
+        content.style = `flex-direction: ${this.config.flexDirection};`;
         content.className = "network-signal";
 
-        const wifiWrapper = document.createElement("div");
-        wifiWrapper.className = "wifi-wrapper";
-
+        const BASE_WIDTH = 124;
+        const width = BASE_WIDTH * this.config.scale;
         const wifiSign = document.createElement("img");
+        wifiSign.style = `width: ${width}px;`
         wifiSign.className = "wifi-sign";
-
-        wifiWrapper.appendChild(wifiSign);
 
         if (this.config.showMessage) {
             var connStatus = document.createElement("p");
@@ -104,7 +101,7 @@ Module.register("MMM-network-signal", {
         if (this.config.showMessage) {
             content.appendChild(connStatus);
         }
-        content.appendChild(wifiWrapper);
+        content.appendChild(wifiSign);
         return content;
     },
 
