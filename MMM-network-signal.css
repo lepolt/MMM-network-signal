@@ -1,0 +1,9 @@
+div.network-signal {
+    display: flex;
+    justify-content: space-between;
+}
+
+p.connection-status {
+    text-align: center;
+    font-size: 0.65em;
+}

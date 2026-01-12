@@ -21,6 +21,7 @@ Module.register("MMM-network-signal", {
             weak: 500,
         },
         flexDirection: 'row', // set to 'row' to display the row in left-to-right mode, 'row-reverse' to display the row in right-to-left mode
+        flexAlignment: 'center',
         scale: 0.45 // scale for the icon, must be greater than 0
     },
     getTranslations: function() {
@@ -31,7 +32,6 @@ Module.register("MMM-network-signal", {
 			es: "translations/es.json",
 			fr: "translations/fr.json",
 			it: "translations/it.json"
-
 		};
 	},
 
@@ -49,13 +49,16 @@ Module.register("MMM-network-signal", {
 
     getDom: function() {
         const content = document.createElement("div");
-        content.style = `display: flex;flex-direction: ${this.config.flexDirection};justify-content: space-between; align-items: center`;
+        content.style = `flex-direction: ${this.config.flexDirection}; align-items: ${this.config.flexAlignment}`;
+        content.className = "network-signal";
+
         const wifiSign = document.createElement("img");
         wifiSign.style = `transform:scale(${this.config.scale})`;
-        if (this.config.showMessage)
-        {
+        wifiSign.className = "wifi-sign";
+
+        if (this.config.showMessage) {
             var connStatus = document.createElement("p");
-            connStatus.style = "text-align:center;font-size:0.65em";
+            connStatus.className = "connection-status"
         }
 
         // Changing icon
@@ -63,32 +66,28 @@ Module.register("MMM-network-signal", {
             // Fast ping, strong signal
             case this.ping < this.config.thresholds.strong:
                 wifiSign.src = this.file("icons/3.png");
-                if (this.config.showMessage)
-                {
+                if (this.config.showMessage) {
                     connStatus.innerHTML = this.translate("excellent")
                 }
                 break;
             // Medium ping, medium signal
             case this.ping < this.config.thresholds.medium:
                 wifiSign.src = this.file("icons/2.png");
-                if (this.config.showMessage)
-                {
+                if (this.config.showMessage) {
                     connStatus.innerHTML = this.translate("good")
                 }
                 break;
             // Slow ping, weak signal
             case this.ping < this.config.thresholds.weak:
                 wifiSign.src = this.file("icons/1.png");
-                if (this.config.showMessage)
-                {
+                if (this.config.showMessage) {
                     connStatus.innerHTML = this.translate("normal")
                 }
                 break;
             // Ultraslow ping, better if "no signal"
             case this.ping > this.config.thresholds.weak:
                 wifiSign.src = this.file("icons/0.png");
-                if (this.config.showMessage)
-                {
+                if (this.config.showMessage) {
                     connStatus.innerHTML = this.translate("bad")
                 }
                 break;
@@ -98,8 +97,7 @@ Module.register("MMM-network-signal", {
                 break;
         }
 
-        if (this.config.showMessage)
-        {
+        if (this.config.showMessage) {
             content.appendChild(connStatus);
         }
         content.appendChild(wifiSign);

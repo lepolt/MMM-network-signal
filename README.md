@@ -46,4 +46,5 @@ nano ~/MagicMirror/config/config.js # change nano to your favorite editor
 | `thresholds`       | `{ strong: 50, medium: 150, weak: 500 }` | Tresholds for icons (ping answer in ms) |
 | `showMessage`      | `true`                                   | Shows status messages depending on how good or bad is the connection |
 | `flexDirection`    | `row`                                    | Sets the direction the module is displayed; `row` displays the row in left-to-right mode (default), `row-reverse` displays the row in right-to-left mode. |
+| `flexAlignment`    | `center`                                 | Sets the alignment for the flex row. See [documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/align-items) for values |
 | `scale`            | `0.45`                                   | How much to scale the ping icon. Must be greater than 0. |

@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PoOwAa/MMM-network-signal.git"
+    "url": "git+https://github.com/lepolt/MMM-network-signal.git"
   },
   "keywords": [
     "MMM",
@@ -16,13 +16,13 @@
     "MagicMirror2",
     "Network"
   ],
-  "author": "PoOwAa",
+  "author": "Jonathan Lepolt",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PoOwAa/MMM-network-signal/issues"
+    "url": "https://github.com/lepolt/MMM-network-signal/issues"
   },
-  "homepage": "https://github.com/PoOwAa/MMM-network-signal#readme",
+  "homepage": "https://github.com/lepolt/MMM-network-signal#readme",
   "dependencies": {
-    "ping": "^0.4.0"
+    "ping": "^1.0.0"
   }
 }
