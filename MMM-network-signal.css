@@ -3,6 +3,14 @@ div.network-signal {
     justify-content: space-between;
 }
 
+.network-signal .wifi-wrapper {
+    transform: scale(var(--wifi-scale, 1));
+}
+
+.network-signal .wifi-wrapper .wifi-sign {
+    display: block;
+}
+
 p.connection-status {
     text-align: center;
     font-size: 0.65em;

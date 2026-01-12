@@ -49,12 +49,16 @@ Module.register("MMM-network-signal", {
 
     getDom: function() {
         const content = document.createElement("div");
-        content.style = `flex-direction: ${this.config.flexDirection}; align-items: ${this.config.flexAlignment}`;
+        content.style = `flex-direction: ${this.config.flexDirection}; align-items: ${this.config.flexAlignment}; style="--wifi-scale: ${this.config.scale};"`;
         content.className = "network-signal";
 
+        const wifiWrapper = document.createElement("div");
+        wifiWrapper.className = "wifi-wrapper";
+
         const wifiSign = document.createElement("img");
-        wifiSign.style = `transform:scale(${this.config.scale})`;
         wifiSign.className = "wifi-sign";
+
+        wifiWrapper.appendChild(wifiSign);
 
         if (this.config.showMessage) {
             var connStatus = document.createElement("p");
@@ -100,7 +104,7 @@ Module.register("MMM-network-signal", {
         if (this.config.showMessage) {
             content.appendChild(connStatus);
         }
-        content.appendChild(wifiSign);
+        content.appendChild(wifiWrapper);
         return content;
     },
 
